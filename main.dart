@@ -88,7 +88,11 @@ void addStudent(){
         print("Probation");
     }
 
-    students.add({"name": name, "age": age, "course": course, "gwa" : gwa, "status" : status});
+    students.add({"name": name,
+                "age": age,
+                "course": course,
+                "gwa" : gwa,
+                "status" : status});
     print ("Added Successful");
 
 }
