@@ -1,14 +1,11 @@
 import 'dart:io';
 
-// Global list to store the student maps
 List<Map<String, dynamic>> students = [];
 
 void main() {
   String? menu;
 
-  // Using a do-while loop as specified on the whiteboard so the menu keeps looping
   do {
-    // Switch Statements & Menu Display
     print("\n<---STUDENT INFORMATION SYSTEM--->");
     print("0. Search Student");
     print("1. Add Student");
@@ -22,7 +19,6 @@ void main() {
 
     menu = stdin.readLineSync();
     
-    // Switch statement to handle menu choices
     switch (menu) {
       case "0":
         print("Search Student");
@@ -66,12 +62,10 @@ void main() {
       default:
         print("Invalid Input");
     }
-  } while (menu != "8"); // Keeps running until choice 8 is selected
+  } while (menu != "8");
 }
 
-// Method to add a student record
 void addStudent() {
-  // User Input (Console)
   stdout.write("Enter your name:");
   String? name = stdin.readLineSync();
   stdout.write("Enter your Age:");
@@ -83,7 +77,6 @@ void addStudent() {
 
   var status = gwa;
   
-  // Control Flow (If Else) for GWA status
   if (gwa <=1.75){
       print("Excellent");
       status = "Excellent";
@@ -98,7 +91,6 @@ void addStudent() {
       status = "Probation";
   }
 
-  // Adding inputs into our List and Map structure
   students.add({
     "name": name,
     "age": age,
@@ -110,7 +102,6 @@ void addStudent() {
   print ("Added Successful");
 }
 
-// Method to view all students using a for loop
 void viewStudents() {
   if (students.isEmpty) {
     print("Wala pa pong student na naka-save.");
@@ -123,7 +114,6 @@ void viewStudents() {
   }
 }
 
-// Method to search a student by name
 void searchStudent() {
   if (students.isEmpty) {
     print("Empty pa po yung list.");
@@ -146,7 +136,6 @@ void searchStudent() {
   }
 }
 
-// Method to update student information using index
 void updateStudent() {
   viewStudents();
   if (students.isEmpty) return;
@@ -188,7 +177,6 @@ void updateStudent() {
   }
 }
 
-// Method to delete a student from the list
 void deleteStudent() {
   viewStudents();
   if (students.isEmpty) return;
@@ -204,7 +192,6 @@ void deleteStudent() {
   }
 }
 
-// Method to compute the class average GWA
 void computeClassAverage() {
   if (students.isEmpty) {
     print("Walang students para ma-compute.");
@@ -220,7 +207,6 @@ void computeClassAverage() {
   print("Class Average GWA: ${average.toStringAsFixed(2)}");
 }
 
-// Method to find highest and lowest grade (lowest GWA is highest grade)
 void displayHighestLowestGrade() {
   if (students.isEmpty) {
     print("Walang students pa.");
