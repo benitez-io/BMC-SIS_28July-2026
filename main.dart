@@ -1,99 +1,86 @@
 import 'dart:io';
-List<Map<String,dynamic>> students =[];
-void main(){
-    //User Input (Console)
-    // stdout.write("Enter your name:");
-    // String? name = stdin.readLineSync();
-    // stdout.write("Enter your Age:");
-    // String? age = stdin.readLineSync();
-    // stdout.write("Enter your Course:");
-    // String? course = stdin.readLineSync();
-    // stdout.write("Your GWA: ");
-    // double gwa = double.parse (stdin.readLineSync()!);
+
+List<Map<String,dynamic>> student = [];
 
 
-    // print ("Hello $name");
-    // print ("Type your Age: $age");
-    // print ("Type your course: $course");
-    // print ("GWA: $gwa");
+void main() {
+while (true) {
+      print ("----------------------------");
+      print ("1. Add Students");
+      print ("2. View the students Info");
+      print ("3. Update the Info");
+      print ("4. Delete the Student Info");
+      print ("5. Exit\n");
+      print ("----------------------------");
+      print ("Choose number from 1-5\n");
 
-    //Control Flow (If Else)
-    // if (gwa <=1.75){
-    //     print("Excellent");
-    // } else if (gwa <=2.75){
-    //     print("Very Good");
-    // } else if (gwa <=3.75){
-    //     print("Passed");
-    // } else{
-    //     print("Probation");
-    // }
+      int menu = int.parse (stdin.readLineSync()!);
 
+        switch (menu) {
+          case 1 : add_student();
+        print ("\nAdd Students\n");
+          break;
 
-//Switch Statements
-    print ("<---STUDENT INFORMATION SYSTEM--->");
-    print ("0. Search Student");
-    print ("1. Add Student");
-    print ("2. View Student List");
-    print ("3. Update Student Info");
-    print ("4. Delete Student Info");
+          case 2 : view_student();
+        print ("\nView the students Info\n");
+          break;
 
-    String? menu = stdin.readLineSync();
-    switch (menu){
-        case "0":
-        print ("Search Student");
+          case 3: update_student();
+        print ("\nUpdate the Info\n");
+          break;
 
-        case "1":
-        print ("Add Student");
-        addStudent();
-        break;
-
-        case "2":
-        print ("View Student List");
-        break;
-
-        case "3":
-        print ("Update Student Info");
-        break;
-
-        case "4":
-        print ("Delete Student Info");
-        break;
+          case 4: delete_student();
+        print ("\nDelete\n");
+          break;
+          
+          case 5: exit();
+        print ("\nExit\n");
+        return;
+        default: print ("\nInvalid Number:) Choose number from 1-5\n");
         
-        default:
-            print("Invalid Input");
+        }
     }
 }
 
-void addStudent(){
+void add_student() {
+    stdout.write ("Enter name: ");
+    String name = stdin.readLineSync()!;
 
-    // User Input (Console)
-    stdout.write("Enter your name:");
-    String? name = stdin.readLineSync();
-    stdout.write("Enter your Age:");
-    String? age = stdin.readLineSync();
-    stdout.write("Enter your Course:");
-    String? course = stdin.readLineSync();
-    stdout.write("Your GWA: ");
-    double gwa = double.parse (stdin.readLineSync()!);
+    print ("Enter course: ");
+    String course = stdin.readLineSync()!;
 
-    var status = gwa;
-    // Control Flow (If Else)
-    if (gwa <=1.75){
-        print("Excellent");
-    } else if (gwa <=2.75){
-        print("Very Good");
-    } else if (gwa <=3.75){
-        print("Passed");
-    } else{
-        print("Probation");
-    }
+    print ("Enter year level: ");
+    String year_level = stdin.readLineSync()!;
 
-    students.add({"name": name,
-                "age": age,
-                "course": course,
-                "gwa" : gwa,
-                "status" : status});
-    print ("Added Successful");
+    student.add ({"name" : name,  "course" : course, "year_level" : year_level});
 
 }
 
+void view_student() {
+    print ("2. View the students Info");
+  if (student.isEmpty){
+    print("No Records Found");
+  }
+
+  for (int i = 0; i<student.length; i++){
+    var students = student [i];
+    print ("name: ${students["name\n"]}" + "course: ${students["course\n"]}" + "year_level: ${students["year_level\n"]}");
+  }
+
+}
+
+void update_student() {
+  searchStudent();
+      print ("3. Update the Info");
+
+}
+
+void delete_student() {
+      print ("4. Delete the Student Info");
+
+}
+
+void exit() {
+      print ("5. Exit");
+
+}
